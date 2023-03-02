@@ -6,7 +6,7 @@ The contents of this `README.md` file and the `client.cfg` file are part of the 
 
 These have been prepared in collaboration between Mainsail and Fluidd maintainers and are used here with the knowledge and agreement of both teams.
 
-## Introduction
+## Instructions
 
 This is the new location of the macros and settings provided by the Fluidd team. The intent is to enable all users to setup important macros and settings needed by Fluidd.
 
@@ -170,7 +170,7 @@ First you need to prepare your slicer as described in https://github.com/Klipper
 If you done that you can either use
 
 ```txt
-SET_PAUSE_NEXT_LAYER [MACRO=<name>]
+SET_PAUSE_NEXT_LAYER [ENABLE=1] [MACRO=<name>]
 ```
 
 to get execute the given GCODE macro at the next layer change. The MACRO is normally either PAUSE (default) or M600 (if you have specified it in your printer.cfg).
@@ -178,15 +178,21 @@ to get execute the given GCODE macro at the next layer change. The MACRO is norm
 Or use
 
 ```txt
-SET_PAUSE_AT_LAYER LAYER=<number> [MACRO=<name>]
+SET_PAUSE_AT_LAYER [ENABLE=1] [LAYER=<number>] [MACRO=<name>]
 ```
 
 to get execute the given GCODE macro at the given LAYER number change. The MACRO is normally either PAUSE (default) or M600 (if you have specified it in your printer.cfg).
 
+To remove the "Pause at next Layer" simple send
+
+```txt
+SET_PAUSE_AT_LAYER ENABLE=0
+```
+
 To remove the "Pause at Layer" simple send
 
 ```txt
-SET_PAUSE_AT_LAYER
+SET_PAUSE_AT_LAYER [ENABLE=0]
 ```
 
 Both will clear after execution.

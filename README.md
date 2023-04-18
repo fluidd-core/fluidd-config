@@ -2,7 +2,7 @@
 
 ## Disclaimer
 
-The contents of this `README.md` file and the `client.cfg` file are part of the Mainsail Crew's own [mainsail_config](https://github.com/fluidd-core/fluidd-config).
+The contents of this `README.md` file and the `client.cfg` file are part of the Mainsail Crew's own [mainsail_config](https://github.com/mainsail-crew/mainsail-config).
 
 These have been prepared in collaboration between Mainsail and Fluidd maintainers and are used here with the knowledge and agreement of both teams.
 

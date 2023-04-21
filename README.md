@@ -196,3 +196,24 @@ SET_PAUSE_AT_LAYER [ENABLE=0]
 ```
 
 Both will clear after execution.
+
+### New Feature: Save/Restore extruder temperature on pause/resume
+
+It is posible to switch off the extruder after entering PAUSE. RESUME will heatup the extruder if needed.
+
+That is helpful if you e.g. do a pause because of an runout and are not there. Be aware that doing that might have a negative effect on your print quality. Be aware the bed must be heated all the time!
+
+The following example shows you how to modify your [idle_timeout] to switch of the extruder in case the idle timeout kicks in.
+
+```ini
+[idle_timeout]
+gcode:
+  {% if printer.pause_resume.is_paused %}
+    {action_respond_info("Idle Timeout: Extruder powered down")}
+    M104 S0   ; Set Hot-end to 0C (off)
+  {% else %}
+    {action_respond_info("Idle Timeout: Stepper and Heater powered down")}
+    TURN_OFF_HEATERS
+    M84
+{% endif %}
+```

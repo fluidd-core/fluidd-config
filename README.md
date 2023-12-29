@@ -39,7 +39,7 @@ There are 2 main reasons for that decision
 ### How to install
 
 We currently do not provide an installer and we might never do. But doing it is simple copy and paste a few commands in an ssh terminal.
-The instructions assume that you have an up to date and working moonraker installation. If not start with updating your moonraker first.
+The instructions assume that you have an up-to-date and working moonraker installation. If not start with updating your moonraker first.
 
 ```sh
 cd ~
@@ -209,23 +209,23 @@ SET_PAUSE_AT_LAYER [ENABLE=1] [LAYER=<number>] [MACRO=<name>]
 
 to get execute the given GCODE macro at the given LAYER number change. The MACRO is normally either PAUSE (default) or M600 (if you have specified it in your printer.cfg).
 
-To remove the "Pause at next Layer" simple send
+To remove the "Pause at next Layer" simply send
+
+```txt
+SET_PAUSE_NEXT_LAYER ENABLE=0
+```
+
+To remove the "Pause at Layer" simply send
 
 ```txt
 SET_PAUSE_AT_LAYER ENABLE=0
-```
-
-To remove the "Pause at Layer" simple send
-
-```txt
-SET_PAUSE_AT_LAYER [ENABLE=0]
 ```
 
 Both will clear after execution.
 
 ### New Feature: Save/Restore extruder temperature on pause/resume
 
-It is posible to switch off the extruder after entering PAUSE. RESUME will heatup the extruder if needed.
+With commit https://github.com/fluidd-core/fluidd-config/commit/5faf20d45ac71a5c0bdd403c2ee3c1f27c633597 it is posible to switch off the extruder after entering PAUSE. RESUME will heatup the extruder if needed.
 
 That is helpful if you e.g. do a pause because of an runout and are not there. Be aware that doing that might have a negative effect on your print quality. Be aware the bed must be heated all the time!
 
@@ -233,7 +233,7 @@ The following example shows you how to modify your [idle_timeout] to switch of t
 
 The old [idle_timeout] example is removed please use the newer one below.
 
-**Update:** Some users reporting that this feature interferes with their workflow. Therefore, we improved it by:
+**Update:** Some users reporting that this feature does interfere with their workflow. Therefor we improved it by:
 
 - The temperature is only restored if you come out of idle_timeout
 - PAUSE gets a new paramter RESTORE [0/1]
@@ -272,7 +272,7 @@ gcode:
   {% endif %}
 ```
 
-### New Feature: change idle_timeout when going in PAUSE
+### New Feature: Change idle_timeout when going in PAUSE
 
 Many users falling in the trap of idle_timeout. This module is always activated an will shut down heaters and motors after 10 minutes if the printer is idle.
 Users may detect this behaivior first time after the install a runout sensor and have a runout when they are away of the printer.
